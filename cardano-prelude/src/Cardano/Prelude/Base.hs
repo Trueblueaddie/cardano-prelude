@@ -2,32 +2,30 @@
 {-# LANGUAGE Safe #-}
 
 module Cardano.Prelude.Base
-  ( module X
-  , identity
-  , putTextLn
-  , length
+  ( module X,
+    identity,
+    putTextLn,
+    length,
   )
 where
 
-import Protolude as X
-  hiding ( Hashable
-  , Map
-  , hash
-  , hashUsing
-  , hashWithSalt
-  , identity
-  , length
-  , witness
-  , (.)
-  )
-import qualified Protolude as Y
-
-import Data.Map.Strict as X (Map)
-import qualified Data.Text as T
-
 import Control.Category (id)
 import Control.Category as X hiding (id)
+import Data.Map.Strict as X (Map)
+import qualified Data.Text as T
 import Numeric.Natural as X
+import Protolude as X hiding
+  ( Hashable,
+    Map,
+    hash,
+    hashUsing,
+    hashWithSalt,
+    identity,
+    length,
+    witness,
+    (.),
+  )
+import qualified Protolude as Y
 
 -- | Rename `id` to `identity` to allow `id` as a variable name
 identity :: Category cat => cat a a
@@ -40,7 +38,7 @@ putTextLn = putStrLn
 
 -- Length which includes @Text@ as well as @Foldable@.
 class HasLength a where
-    length' :: a -> Int
+  length' :: a -> Int
 
 instance HasLength Text where
   length' = T.length

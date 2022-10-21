@@ -1,5 +1,5 @@
 module Test.Cardano.Prelude
-  ( module X
+  ( module X,
   )
 where
 

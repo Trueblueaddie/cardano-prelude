@@ -1,12 +1,9 @@
-{-|
-Module      :  Cardano.Prelude.GHC.Heap
-
-Functions and data types related to GHC heap internals.
-
--}
-
+-- |
+-- Module      :  Cardano.Prelude.GHC.Heap
+--
+-- Functions and data types related to GHC heap internals.
 module Cardano.Prelude.GHC.Heap
-  ( module X
+  ( module X,
   )
 where
 

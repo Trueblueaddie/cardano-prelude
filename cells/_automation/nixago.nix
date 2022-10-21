@@ -7,10 +7,6 @@
 in {
   treefmt = presets.nixago.treefmt {
     configData.formatter = {
-      prettier = {
-        # TODO: remove excludes
-        excludes = ["**.md" "**.toml"];
-      };
       haskell = {
         command = "ormolu";
         options = [
@@ -24,8 +20,7 @@ in {
           "inplace"
           "--check-idempotence"
         ];
-        # TODO: activate haskell formatter:
-        #includes = ["*.hs"];
+        includes = ["*.hs"];
       };
     };
     packages = [nixpkgs.ormolu];

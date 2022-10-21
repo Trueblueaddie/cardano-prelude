@@ -1,7 +1,6 @@
 -- | Helper functions for enforcing strictness.
-
 module Cardano.Prelude.Strict
-  ( forceElemsToWHNF
+  ( forceElemsToWHNF,
   )
 where
 

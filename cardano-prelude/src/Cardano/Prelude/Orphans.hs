@@ -1,20 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE PolyKinds         #-}
-{-# LANGUAGE TypeFamilies      #-}
-
+{-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE TypeFamilies #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 -- | Orphan instances for external types/classes.
+module Cardano.Prelude.Orphans () where
 
-module Cardano.Prelude.Orphans
-  ()
-where
-
-import           Cardano.Prelude.Base
-import           Data.Tagged          (Tagged (Tagged))
-import           Formatting.Buildable (Buildable (..))
-
-import qualified Formatting           as F
+import Cardano.Prelude.Base
+import Data.Tagged (Tagged (Tagged))
+import qualified Formatting as F
+import Formatting.Buildable (Buildable (..))
 
 --------------------------------------------------------------------------------
 -- Buildable
@@ -25,10 +20,11 @@ instance Buildable () where
   build _ = "()"
 
 instance (Typeable s, Buildable a) => Buildable (Tagged s a) where
-  build tt@(Tagged v) = F.bprint
-    ("Tagged " F.% F.shown F.% " " F.% F.build)
-    ts
-    v
-   where
-    ts    = typeRep proxy
-    proxy = (const Proxy :: Tagged s a -> Proxy s) tt
+  build tt@(Tagged v) =
+    F.bprint
+      ("Tagged " F.% F.shown F.% " " F.% F.build)
+      ts
+      v
+    where
+      ts = typeRep proxy
+      proxy = (const Proxy :: Tagged s a -> Proxy s) tt
